@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: nodejs
+  name: nodejs
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: nodejs
+    spec:
+      containers:
+      - env:
+        - name: MONGO_USERNAME
+        - name: MONGO_PASSWORD
+        - name: MONGO_HOSTNAME
+          value: db
+        - name: MONGO_PORT
+          value: "27017"
+        - name: MONGO_DB
+          value: sharkinfo
+        image: youjing2100/node-kubernetes
+        name: nodejs
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}
