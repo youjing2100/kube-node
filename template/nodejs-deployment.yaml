@@ -21,7 +21,7 @@ spec:
       initContainers:
         - name: init-db
           image: busybox
-          command: ['sh', '-c', 'until nc -z db:27017; do echo waiting for db; sleep 2; done;']
+          command: ['sh', '-c', 'until nc -z mongodb:27017; do echo waiting for db; sleep 2; done;']
       containers:
       - name: nodejs
         image: youjing2100/node-kubernetes
